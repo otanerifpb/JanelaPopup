@@ -1,4 +1,4 @@
-package com.example.janelapopup
+package com.example.janelapopap
 
 import android.content.DialogInterface
 import android.content.DialogInterface.OnClickListener
@@ -11,8 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.util.*
-import com.example.janelapopup.OnItemLongClickRecyclerView as OnItemLongClickRecyclerView1
+import com.example.janelapopap.OnItemLongClickRecyclerView as OnItemLongClickRecyclerView1
 
 class MainActivity : AppCompatActivity() {
     private lateinit var rvNomes: RecyclerView
@@ -75,7 +74,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Click curto no objeto da Tela
-    inner class OnItemClick: OnItemClickRecyclerView{
+    inner class OnItemClick: OnItemClickRecyclerView {
         override fun onItemClick(position: Int){
             val nome = this@MainActivity.lista.get(position)
             //Toast.makeText(this@MainActivity, nome, Toast.LENGTH_SHORT).show()
@@ -124,6 +123,7 @@ class MainActivity : AppCompatActivity() {
         ItemTouchHelper.DOWN or ItemTouchHelper.UP,
         ItemTouchHelper.START or ItemTouchHelper.END) {
 
+        // Mover objeto na tela em todas as direções
         override fun onMove(
             recyclerView: RecyclerView,
             viewHolder: RecyclerView.ViewHolder,
@@ -136,8 +136,10 @@ class MainActivity : AppCompatActivity() {
             return true
         }
 
+        //Deletar objeto da Tela ao deslizar para a direita ou esquerda
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            // Not yet codified
+            deleteTexto(this@MainActivity.lista.get(posicao))
+            Log.d("APP_LOG", "Lista Atualizada: " + this@MainActivity.lista)
         }
     }
 }

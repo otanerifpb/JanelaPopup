@@ -1,4 +1,4 @@
-package com.example.janelapopup
+package com.example.janelapopap
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,12 +13,12 @@ class MyAdapter(val lista: MutableList<String>): RecyclerView.Adapter<MyAdapter.
     var onItemLongClickRecyclerView: OnItemLongClickRecyclerView? = null
     var onItemClick: OnItemClickRecyclerView? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyAdapter.MyHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
         return MyHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MyAdapter.MyHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyHolder, position: Int) {
         val nome = this.lista.get(position)
         holder.tvNome.text = nome
 
